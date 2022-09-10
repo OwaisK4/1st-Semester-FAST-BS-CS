@@ -1,0 +1,88 @@
+PART 1:
+CREATE DATABASE Engro Chemicals;
+CREATE TABLE Employees
+	(EmpID integer,
+	FName varchar(20) 	   NOT NULL,
+	LName varchar(20)      NOT NULL,
+	Department varchar(20) NOT NULL,
+	Project varchar(3),
+	Address varchar(20),
+	DOB date,
+	Position varchar(20)   NOT NULL,
+	Joining date,
+	Salary integer         NOT NULL,
+	PRIMARY KEY(EmpID) );
+
+PART 2:
+INSERT into Employees(EmpID, FName, LName, Department, Project, Address, DOB, Position, Joining, Salary)
+values(1 ,"Salim", "Khan", "HR", "P1", "Hyderabad", '01/12/1976', "Manager", '01/05/2019', 50000),
+	  (3 ,"Raheel", "Aslam", "Account", "P3", "Karachi", '01/01/1980', "Manager", '01/10/2019', 60000),
+	  (4 ,"Ateeb", "Arsalan", "HR", "P1", "Hyderabad", '02/05/1992', "Lead", '02/05/2019', 45000);
+
+PART 3:
+Alter table Employees
+ADD Tax integer;
+
+PART 4:
+	UPDATE Employees
+	Set Tax = 1750
+	WHERE  EmpID = 1,
+	Set Tax = 2100
+	WHERE  EmpID = 3,
+	Set Tax = 1575
+	WHERE  EmpID = 4;
+	
+PART 5:
+	Select EmpID, FName, LName from Employees
+	WHERE Position = "Manager" AND Project = "P3"
+	order by DOB asc;
+	
+PART 6:
+	Select Project,Count(EmpID) from Employees
+	group by Project
+	order by Count(EmpID) asc;
+	
+PART 7:	
+	Select EmpID, Joining, Salary from Employees
+	WHERE FName like "Sal[ie]m";
+	
+PART 8:
+	Select EmpID, Address, DOB, Joining, Salary from Employees
+	WHERE FName like "A%" and LName like "K%N" and Salary < 51666;
+	
+PART 9:
+	Select EmpID, Address, DOB, Joining, Salary from Employees
+	WHERE Department = "HR" and Salary = max(Salary);
+	
+PART 10:
+	Select Project from Employees
+	order by Salary desc;
+	
+PART 11:
+	DELETE from Employees
+	WHERE Salary >= 600000;
+
+PART 12:
+	DELETE from Employees
+	WHERE FName = "Salim" and LName = "Khan";
+	
+PART 13:--------
+	Select EmpID, FName, LName, Department from Employees
+	WHERE Salary = max(Salary) 	 		  			
+	
+
+
+PART 14:--------
+	Select Department, EmpID from Employees
+	group by Department
+	order by EmpID desc;		
+	
+PART 15:---------
+	Select Position, EmpID, Salary from Employees
+	group  by Position
+	count()
+	order by Salary desc
+	
+	
+	
+	
